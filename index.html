@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -29,12 +30,17 @@
         <div>
           <h1 class="current-city">Paris</h1>
           <p class="current-details">
-            <span class="date">Thursday 16:35</span>, moderate rain <br />
-            Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+            <span class="date">Thursday 16:35</span>,
+            <span class="description">moderate rain </span><br />
+            Humidity: <strong class="humidity">87</strong><strong>%</strong>,
+            Wind: <strong class="wind">7.2</strong><strong>km/h</strong>
           </p>
         </div>
         <div class="current-temperature">
-          <span class="current-temperature-icon">☀️</span
+          <span class="current-temperature-icon"
+            ><img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+              width="80" /></span
           ><span class="current-temperature-value">24</span
           ><span class="current-temperature-unit">°C</span>
         </div>
