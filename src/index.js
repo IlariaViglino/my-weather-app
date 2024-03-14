@@ -27,7 +27,7 @@ function displayWind(response) {
 function displayIcon(response) {
   let emojiElement = document.querySelector(".current-temperature-icon");
   let url = response.data.condition.icon_url;
-  emojiElement.innerHTML = `<img src=${url}>`;
+  emojiElement.innerHTML = `<img src=${url} width="80">`;
 }
 function apiCity(city) {
   let key = "do37btb04e66032f8eb1ab0493255777";
@@ -47,7 +47,7 @@ function apiCity(city) {
 
 //Search engine
 function capitalizeFirstLetter(string) {
-  string = string.replaceAll(" ", "");
+  //string = string.replaceAll(" ", "");
   let firstLetter = string.charAt(0);
   firstLetter = firstLetter.toUpperCase();
   let remainder = string.slice(1).toLowerCase();
