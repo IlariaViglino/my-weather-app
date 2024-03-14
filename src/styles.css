@@ -1,0 +1,86 @@
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 650px;
+  padding: 30px;
+  padding-bottom: 40px;
+  padding-top: 25px;
+  margin: 70px auto;
+
+  box-shadow: rgba(19, 20, 45, 0.08) 0px 8px 8px 0;
+}
+body {
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Space Grotesk", sans-serif;
+}
+#search-input {
+  background-color: rgb(227, 238, 244);
+  border: none;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  padding: 20px;
+  width: 75%;
+  border-radius: 6px;
+}
+#submit-button {
+  margin-left: 5px;
+  font-size: 16px;
+  background-color: rgb(107, 160, 191);
+  color: white;
+  border: none;
+  padding: 20px;
+  line-height: 1;
+  border-radius: 5px;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+}
+.current-city {
+  font-size: 38px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+.current-temperature {
+  margin-top: 50px;
+}
+.current-temperature-icon {
+  position: relative;
+  top: 50px;
+  right: 30px;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.current-temperature-value {
+  position: relative;
+  top: 60px;
+  right: 30px;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.current-temperature-unit {
+  font-size: 28px;
+  position: relative;
+  top: 30px;
+  right: 30px;
+}
+.current-details {
+  color: #757575;
+  line-height: 1.5;
+}
+
+.current-details strong {
+  color: rgb(246, 82, 130);
+}
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #757575;
+}
+footer a {
+  color: rgb(65, 127, 163);
+}
