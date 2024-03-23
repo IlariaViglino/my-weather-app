@@ -1,3 +1,16 @@
+//Default city
+
+let key = "do37btb04e66032f8eb1ab0493255777";
+let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=lausanne&key=${key}&units=metric`;
+axios.get(apiUrlCurrent).then(displayTemp);
+axios.get(apiUrlCurrent).then(displayDescription);
+axios.get(apiUrlCurrent).then(displayHumidity);
+axios.get(apiUrlCurrent).then(displayWind);
+axios.get(apiUrlCurrent).then(displayIcon);
+let key2 = "do37btb04e66032f8eb1ab0493255777";
+let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=lausanne&key=${key2}&units=metric`;
+axios.get(apiUrlForecast).then(displayForecast);
+
 //API
 function displayTemp(response) {
   let temp = document.querySelector(".current-temperature-value");
@@ -58,7 +71,15 @@ let days = [
 let now = new Date();
 let day = days[now.getDay()];
 let date = document.querySelector(".date");
-date.innerHTML = `${day} ${now.getHours()}:${now.getMinutes()}`;
+function minutesFormat(minutes) {
+  if (minutes < 10) {
+    return `0${minutes}`;
+  } else {
+    return minutes;
+  }
+}
+let minutes = minutesFormat(now.getMinutes());
+date.innerHTML = `${day} ${now.getHours()}:${minutes}`;
 
 //forecast
 
