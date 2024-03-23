@@ -69,3 +69,32 @@ let now = new Date();
 let day = days[now.getDay()];
 let date = document.querySelector(".date");
 date.innerHTML = `${day} ${now.getHours()}:${now.getMinutes()}`;
+
+//forecast
+
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHtml = "";
+  let day = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  day.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast-day">
+          <div class="weather-forecast-date">${day}</div>
+          <div class="weather-forecast-icon">
+            <img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+              width="80"
+            />
+          </div>
+          <div class="weather-forecast-temperatures">
+            <div class="weather-forecast-temperature">
+              <strong>15º</strong>
+            </div>
+            <div class="weather-forecast-temperature">9º</div>
+          </div>
+        </div>`;
+  });
+  forecast.innerHTML = forecastHtml;
+}
+displayForecast();
