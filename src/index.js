@@ -44,16 +44,6 @@ function capitalizeFirstLetter(string) {
   let remainder = string.slice(1).toLowerCase();
   return firstLetter + remainder;
 }
-function changeCity(event) {
-  event.preventDefault();
-  let input = document.querySelector("#search-input");
-  input = capitalizeFirstLetter(input.value);
-  document.querySelector(".current-city").innerHTML = input;
-  apiCity(input);
-}
-
-let searchForm = document.querySelector(".enter-city-form");
-searchForm.addEventListener("submit", changeCity);
 
 //Date
 let days = [
@@ -72,29 +62,57 @@ date.innerHTML = `${day} ${now.getHours()}:${now.getMinutes()}`;
 
 //forecast
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+
+function displayForecast(response) {
   let forecast = document.querySelector("#forecast");
   let forecastHtml = "";
-  let day = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  day.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `<div class="weather-forecast-day">
-          <div class="weather-forecast-date">${day}</div>
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="weather-forecast-day">
+          <div class="weather-forecast-date">${formatDay(day.time)}</div>
           <div class="weather-forecast-icon">
             <img
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-              width="80"
+              src=${day.condition.icon_url}
+              width="60"
             />
           </div>
           <div class="weather-forecast-temperatures">
             <div class="weather-forecast-temperature">
-              <strong>15º</strong>
+              <strong>${Math.round(day.temperature.maximum)}º</strong>
             </div>
-            <div class="weather-forecast-temperature">9º</div>
+            <div class="weather-forecast-temperature">${Math.round(
+              day.temperature.minimum
+            )}º</div>
           </div>
         </div>`;
+    }
   });
   forecast.innerHTML = forecastHtml;
 }
-displayForecast();
+
+function forecastCity(city) {
+  let key = "do37btb04e66032f8eb1ab0493255777";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${key}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function changeCity(event) {
+  event.preventDefault();
+  let input = document.querySelector("#search-input");
+  input = capitalizeFirstLetter(input.value);
+  document.querySelector(".current-city").innerHTML = input;
+  apiCity(input);
+  forecastCity(input);
+}
+
+let searchForm = document.querySelector(".enter-city-form");
+searchForm.addEventListener("submit", changeCity);
