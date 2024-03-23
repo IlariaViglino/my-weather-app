@@ -91,3 +91,22 @@ footer {
 footer a {
   color: rgb(65, 127, 163);
 }
+
+.weather-forecast {
+  margin-top: 25px;
+  color: #757575;
+  text-align: center;
+}
+.forecast-icon {
+  margin-top: 20px;
+}
+.forecast-temp {
+  color: rgb(246, 82, 130);
+  margin-top: 20px;
+}
+.forecast-temp-max {
+  padding: 8px 8px;
+}
+.forecast-temp-min {
+  padding: 8px 8px;
+}
